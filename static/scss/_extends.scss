@@ -1,0 +1,443 @@
+@each $color-actual in $colores {
+  $i: index($colores, $color-actual);
+
+  .texto-#{nth($nombrecolores, $i)} {
+    color: $color-actual !important;
+  }
+
+  .bg-#{nth($nombrecolores, $i)} {
+    background-color: $color-actual !important;
+  }
+
+  /*.border-#{nth($nombrecolores, $i)} {
+    border-color: $color-actual !important;
+  }*/
+
+  .bta-btn-#{nth($nombrecolores, $i)} {
+    @include button-variant($color-actual, $color-actual, mix($color-actual, $blanco, 80%), mix($color-actual, $blanco, 80%), darken($color-actual, 1.2%), darken($color-actual, 1.2%));
+
+    @if (nth($nombrecolores, $i) == "gris") {
+      color: $azulbase !important;
+    }
+
+    @if (nth($nombrecolores, $i) == "morado") {
+      color: $blanco !important;
+    }
+
+    @if (nth($nombrecolores, $i) == "verde") {
+        color: $grisoscuro !important;
+    }
+
+    &:active,
+    &:focus {
+      background-color: mix($color-actual, $negro, 80%) !important;
+    }
+
+    &:hover {
+      color: $blanco;
+    }
+
+    &:active:focus {
+      box-shadow: none !important;
+    }
+  }
+
+  .btn-outline-#{nth($nombrecolores, $i)} {
+    //@include button-outline-variant($color-actual, color-yiq($color-actual));
+  }
+
+  // Colores de etiquetas
+  .etiqueta-#{nth($nombrecolores, $i)} {
+    background-color: $color-actual !important;
+
+    &:after {
+      border-color: transparent transparent transparent $color-actual !important;
+    }
+
+    &:before {
+      border-color: transparent $color-actual transparent transparent !important;
+    }
+  }
+
+  .table-striped__#{nth($nombrecolores, $i)} {
+    tbody tr:nth-of-type(odd) {
+      background-color: rgba($color-actual, .15);
+    }
+  }
+}
+
+@mixin optional-at-root($sel) {
+  @at-root #{if(not &, $sel, selector-append(&, $sel))} {
+    @content;
+  }
+}
+
+@mixin placeholder {
+  @include optional-at-root('::-webkit-input-placeholder') {
+    @content;
+  }
+
+  @include optional-at-root(':-moz-placeholder') {
+    @content;
+  }
+
+  @include optional-at-root('::-moz-placeholder') {
+    @content;
+  }
+
+  @include optional-at-root(':-ms-input-placeholder') {
+    @content;
+  }
+}
+
+/**
+ * Estilos para títulos
+ */
+@for $i from 1 through 6 {
+  h#{$i},
+  .h#{$i} {
+    @extend .mt-0 !optional;
+
+    @if $i==1 {
+      @extend .mt-0 !optional;
+      @extend .lh-1-25;
+      font-size: 24px;
+    }
+
+    @if $i==2 {
+      font-size: 18px;
+      @extend .lh-1-25;
+    }
+
+    @if $i==3 {
+      font-size: 20px;
+      @extend .mb-2;
+    }
+
+    @if $i==4 {
+      font-size: 16px;
+    }
+
+    @if $i==5 {
+      font-size: 14px;
+      font-weight: normal;
+    }
+
+    @if $i==6 {
+      font-size: 14px;
+    }
+  }
+}
+
+/**
+ * Custom radios
+ */
+@for $i from 0 through 18 {
+  .radio-#{$i} {
+    @include border-radius(#{$i}px);
+  }
+}
+
+@for $i from 1 through 100 {
+  .h-#{$i} {
+    height: #{$i+'%'};
+  }
+
+  .vh-#{$i} {
+    height: #{$i+'vh'};
+  }
+
+  .w-#{$i} {
+    width: #{$i+'%'};
+  }
+
+  .vw-#{$i} {
+    width: #{$i+'vw'};
+  }
+
+  /*@include mq(xs) {
+    .h-xs-#{$i} {
+      height: #{$i+'%'};
+    }
+
+    .vh-xs-#{$i} {
+      height: #{$i+'vh'};
+    }
+
+    .w-xs-#{$i} {
+      width: #{$i+'%'} !important;
+    }
+  }*/
+
+  @include mq(mobile) {
+    .h-mobile-#{$i} {
+      height: #{$i+'%'};
+    }
+
+    .vh-mobile-#{$i} {
+      height: #{$i+'vh'};
+    }
+
+    .w-mobile-#{$i} {
+      width: #{$i+'%'} !important;
+    }
+
+    .vw-mobile-#{$i} {
+      width: #{$i+'vw'};
+    }
+  }
+
+  @include mq(tablet) {
+    .h-tablet-#{$i} {
+      height: #{$i+'%'} !important;
+    }
+
+    .vh-tablet-#{$i} {
+      height: #{$i+'vh'};
+    }
+
+    .w-tablet-#{$i} {
+      width: #{$i+'%'} !important;
+    }
+
+    .vw-tablet-#{$i} {
+      width: #{$i+'vw'};
+    }
+  }
+
+  @include mq(desktop) {
+    .h-desktop-#{$i} {
+      height: #{$i+'%'};
+    }
+
+    .vh-desktop-#{$i} {
+      height: #{$i+'vh'};
+    }
+
+    .w-desktop-#{$i} {
+      width: #{$i+'%'} !important;
+    }
+
+    .vw-desktop-#{$i} {
+      width: #{$i+'vw'};
+    }
+  }
+
+  @include mq(wide) {
+    .h-wide-#{$i} {
+      height: #{$i+'%'};
+    }
+
+    .vh-wide-#{$i} {
+      height: #{$i+'vh'};
+    }
+
+    .w-wide-#{$i} {
+      width: #{$i+'%'} !important;
+    }
+
+    .vw-wide-#{$i} {
+      width: #{$i+'vw'};
+    }
+  }
+
+/*
+  @include media-portrait-down(xs) {
+    .h-portrait-xs-#{$i} {
+      height: #{$i+'%'};
+    }
+  }
+
+  @include media-portrait-down(xs) {
+    .h-portrait-xs-#{$i} {
+      height: #{$i+'%'};
+    }
+
+    .vh-portrait-xs-#{$i} {
+      height: #{$i+'vh'};
+    }
+  }
+
+  @include media-landscape-down(xs) {
+    .h-landscape-xs-#{$i} {
+      height: #{$i+'%'};
+    }
+
+    .vh-landscape-xs-#{$i} {
+      height: #{$i+'vh'};
+    }
+  }
+*/
+
+}
+
+@for $i from 1 through 100 {
+  .index-#{$i} {
+    z-index: #{$i};
+  }
+}
+
+@for $i from 1 through 100 {
+  .index-#{$i} {
+    z-index: $i;
+  }
+}
+
+@for $i from 1 through 6 {
+  .ts-#{$i} {
+    @if $i==1 {
+      @include text-shadow(2px, 2px, 4px, rgba($negro, .6));
+    }
+  }
+}
+
+@each $overflow in $overflows {
+  .over-#{$overflow} {
+    overflow: #{$overflow+'!important'};
+  }
+}
+
+$radios: 6 10 20 40 60;
+$sizes-breackpoints: 'xs''sm''md''lg''xl';
+
+@each $radio in $radios {
+  $i: index($radios, $radio);
+
+  .radio-#{nth($sizes-breackpoints, $i)} {
+    @include border-radius(#{$radio+'px'} !important);
+  }
+}
+
+$interlineados: 1 1.25;
+$names-interlineados: '1' '1-25';
+
+@each $interlineado in $interlineados {
+  $i: index($interlineados, $interlineado);
+
+  .lh-#{nth($names-interlineados, $i)} {
+    line-height: #{$interlineado} !important;
+  }
+}
+
+$decorations: none,
+underline,
+overline,
+line-through;
+
+@each $decoration in $decorations {
+  .decoration-#{$decoration} {
+    text-decoration: #{$decoration};
+  }
+}
+
+$cursors: auto,
+default,
+none,
+no-drop,
+not-allowed,
+pointer;
+
+@each $cursor in $cursors {
+  .cursor-#{$cursor} {
+    cursor: #{$cursor};
+  }
+}
+
+$weights: 300,
+400,
+500,
+700;
+
+@each $weight in $weights {
+  .font-#{$weight} {
+    font-weight: #{$weight} !important;
+  }
+}
+
+%animation {
+  @include transition(all 200ms ease-out);
+}
+
+.row {
+  @for $i from 0 through 12 {
+    &.gutter-#{$i} {
+      margin-left: -#{$i}px;
+      margin-right: -#{$i}px;
+
+      &>[class*=col-],
+      &>* {
+        padding-left: #{$i}px;
+        padding-right: #{$i}px;
+      }
+    }
+  }
+}
+
+/**
+ * Posiciones
+ */
+$positions: fixed,
+absolute,
+relative,
+static;
+
+$num-breakpoints: length($mq-breakpoints);
+
+@each $position in $positions {
+  .p-#{$position} {
+    position: #{$position+'!important'};
+  }
+}
+
+@mixin positions($type, $breakpoint, $name-position) {
+  .position-#{$breakpoint}-#{$type} {
+    position: #{$name-position} !important;
+  }
+}
+
+@each $position in $positions {
+  @for $i from 1 through $num-breakpoints {
+    $breakpoint: nth($mq-breakpoints, $i);
+    $breakpoint-name: nth($breakpoint, 1);
+
+    @include mq('#{$breakpoint-name}') {
+      @include positions($position, $breakpoint-name, $position);
+    }
+  }
+}
+
+// Tamaños de fuentes
+$fuentes: '10' '12' '13' '14' '15' '16' '18' '20' '22' '24' '26' '28' '30' '36' '66';
+
+@mixin fuentes($type, $breakpoint, $name-position) {
+  .font-#{$breakpoint}-#{$type} {
+    font-size: #{$name-position+'px'} !important;
+  }
+}
+
+@each $fuente in $fuentes {
+  $i: index($fuentes, $fuente);
+
+  .font-#{$fuente} {
+    font-size: #{$fuente+'px'} !important;
+  }
+
+  @for $i from 1 through $num-breakpoints {
+    $breakpoint: nth($mq-breakpoints, $i);
+    $breakpoint-name: nth($breakpoint, 1);
+
+    @include mq('#{$breakpoint-name}') {
+      @include fuentes($fuente, $breakpoint-name, $fuente);
+    }
+  }
+}
+
+// Sombras
+$box-shadow-sm: 0 1px 3px rgba($negro, .025) !default;
+$box-shadow:    0 .5rem 1rem rgba($negro, .15) !default;
+$box-shadow-lg: 0 1rem 3rem rgba($negro, .175) !default;
+
+.shadow-sm { box-shadow: $box-shadow-sm !important; }
+.shadow { box-shadow: $box-shadow !important; }
+.shadow-lg { box-shadow: $box-shadow-lg !important; }
+.shadow-none { box-shadow: none !important; }

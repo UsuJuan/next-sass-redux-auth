@@ -1,0 +1,268 @@
+.modal {
+  @extend .p-fixed;
+  @extend .index-99;
+  @extend .d-flex;
+  @extend .align-items-center;
+  @extend .justify-content-center;
+  @extend .p-4;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba($grisoscuro, .5);
+
+  &__content {
+    @extend .w-100;
+    @extend .p-relative;
+    @include transition(all 0.30s ease-in-out);
+    max-width: 784px;
+
+    .close {
+      @extend .p-absolute;
+      @extend .pb-2;
+      @extend .texto-blanco;
+      @include translate(0,-100%);
+      right: 0;
+      top: 0;
+    }
+  }
+
+
+  @include mq($until: tablet, $and: '(orientation: landscape)') {
+    &__content {
+      max-width: 60%;
+    }
+  }
+
+
+  &.modal-video {
+    background-color: rgba($negro, .45);
+
+    .modal__content {
+      > div {
+        @extend %content-video;
+      }
+    }
+  }
+}
+
+// Slider
+.slider {
+ button {
+   &.slick-arrow {
+     @extend .index-4;
+     @include border-radius(0);
+     left: 0;
+     background-color: rgba($negro, .8);
+     height: 30px;
+     width: 30px;
+
+     &:before {
+       @extend .font-12;
+       @extend .d-block;
+       font-family: 'icon-peru';
+       content: '\e822';
+     }
+
+     &.slick-next {
+       right: 0;
+       left: auto;
+
+       &:before {
+         content: '\e824';
+       }
+     }
+   }
+ }
+}
+
+%content-video {
+  position: relative;
+  height: 0;
+  overflow: hidden;
+  padding-top: 0;
+  padding-left: 0;
+  padding-right: 0;
+  padding-bottom: 72%;
+
+  iframe, object, embed {
+    @include translate(0, -50%);
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+}
+
+.slider-hero {
+  .item {
+    &:after {
+      @extend .d-block;
+      content: "";
+      padding-top: 72%;
+    }
+
+    > div {
+      @extend .p-absolute;
+      top: 0;
+      right: 0;
+      bottom: -6px;
+      left: 0;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+    }
+
+    &.video {
+      @extend .bg-grisoscuro;
+
+      > div {
+        @extend %content-video;
+      }
+    }
+  }
+
+  @include mq(desktop) {
+    .item {
+      &:after {
+        padding-top: 55%;
+      }
+
+      &.video {
+        > div {
+          padding-bottom: 55%;
+        }
+      }
+    }
+  }
+}
+
+.ofertas {
+  margin-left: -6px;
+  margin-right: -6px;
+
+  .item {
+    @extend .p-relative;
+    padding: 0 6px;
+
+    a {
+      @extend .p-absolute;
+      @extend .index-4;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+    }
+
+    p {
+      font-size: 13px;
+    }
+
+    @include mq($until: tablet) {
+      width: 40vw;
+    }
+  }
+}
+
+// Acordión
+.ac {
+  @include border-radius(9px);
+  margin-top: 10px;
+  border: 1px solid $grismedio;
+
+  h3 {
+    @extend .pr-4;
+    @extend .mb-0;
+  }
+
+  > .ac-q {
+    @extend .py-2;
+    @extend .px-3;
+    @extend .mb-0;
+    margin: 0;
+    text-decoration: none;
+    display: block;
+    cursor: pointer;
+    position: relative;
+
+    &::after {
+      @extend .font-12;
+      @extend .p-absolute;
+      font-family: "icon-peru";
+      content: '\e825';
+      text-align: center;
+      width: 15px;
+      right: 15px;
+      top: 50%;
+      transform: translate(0, -50%);
+    }
+  }
+
+  // Answer class
+  > .ac-a {
+    overflow: hidden;
+    transition-property: all;
+    transition-timing-function: ease;
+
+    p {
+      @extend .m-0;
+    }
+  }
+
+  &.js-enabled {
+    > .ac-a {
+      visibility: hidden;
+    }
+  }
+
+  // Active class
+  &.is-active {
+    > .ac-a {
+      visibility: visible;
+    }
+
+    > .ac-q {
+      &::after {
+        content: '\e823';
+      }
+    }
+  }
+
+  &.ac__img-header {
+    @extend .bg-grismuyclaro;
+    @include border-radius(0);
+    border: 0;
+
+    > .ac-q {
+      @extend .d-flex;
+      @extend .flex-row;
+
+      figure {
+        @include border-radius(2px 2px 0 0);
+        @extend .mr-2;
+        min-width: 140px;
+      }
+
+      &:after {
+        width: 100%;
+        height: 100%;
+        text-align: right;
+        line-height: 50px;
+      }
+    }
+
+    &.is-active {
+      > .ac-q {
+        figure {
+          @extend .d-none;
+        }
+
+        &:after {
+          line-height: 40px;
+        }
+      }
+    }
+  }
+}

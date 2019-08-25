@@ -1,0 +1,311 @@
+/*--- INPUT ---*/
+input, textarea, select{
+  font-family: 'Open Sans', sans-serif;
+}
+
+textarea:focus,
+textarea:focus,
+input:focus,
+input[type=text]:focus,
+input[type=password]:focus,
+input[type=email]:focus,
+input[type=number]:focus,
+input[type=tel]:focus,
+select.custom-select:focus,
+[type=text]:focus,
+[type=password]:focus,
+[type=email]:focus,
+[type=tel]:focus,
+[contenteditable]:focus {
+  box-shadow: inset 0 -1px 0 #ddd;
+  border-color: $verde !important;
+  border-color: $verde !important;
+  border-color: $verde !important;
+  border-color: $verde !important;
+}
+
+label {
+  &.error {
+
+  }
+}
+
+textarea {
+  resize: none;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+textarea,
+select,
+input[type=text],
+input[type=date],
+input[type=datetime],
+input[type=number],
+input[type=search],
+input[type=time],
+input[type=url],
+input[type=tel],
+input[type=email] {
+  @extend .w-100;
+  @include transition(all 0.30s ease-in-out);
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  border-width: 0 0 1px;
+  border-color: $grisbajo;
+  padding: 7px;
+  margin:0px;
+  outline: none;
+
+  @extend .px-4;
+  @extend .py-3;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+button,
+input[type=submit],
+input[type=button],
+.bta-btn {
+  @include border-radius(3px);
+  @extend .text-center;
+  @extend .cursor-pointer;
+  @extend .d-inline-block;
+  @extend .font-bold;
+  @extend .font-14;
+  border: none;
+  padding: 8px 15px;
+  background: $grismedio;
+  color: #fff;
+
+  @include mq(tablet) {
+    padding: 14px 50px;
+  }
+}
+
+.bta-btn {
+  &__lg {
+    padding: 16px 15px;
+  }
+
+  &__sm {
+    padding: 10px 15px;
+    min-width: 110px;
+  }
+}
+
+// Custom
+.form-search {
+  @include transition(width 300ms ease);
+
+  button, input {
+    @include border-radius(0);
+    height: 58px;
+  }
+
+  input {
+    @extend .texto-blanco;
+  }
+
+  button {
+    @extend .p-0;
+
+    &.buscador {
+      &__open {
+
+      }
+
+      &__close {
+        left: 0;
+      }
+
+      &__submit {
+        right: 0;
+        display: none;
+      }
+    }
+  }
+
+  .cnt-search {
+    right: 0;
+  }
+
+  &.active {
+    .cnt-search {
+      @extend .vw-100;
+      padding-left: 50px;
+      padding-right: 58px;
+      max-width: calc(100vw - 15px);
+    }
+
+    button {
+      &.buscador {
+        &__submit {
+          @extend .d-inline-block;
+        }
+      }
+    }
+
+    @include mq(desktop) {
+      .cnt-search {
+        padding: 0 84px;
+
+        input {
+          height: 84px;
+        }
+      }
+    }
+
+    @include mq($until: wide) {
+      .cnt-search {
+        max-width: none;
+      }
+    }
+  }
+}
+
+// Custom checkboxes
+label {
+  &.custom-checkbox {
+    @extend .cursor-pointer;
+    @extend .d-inline-block;
+    @extend .mr-4;
+    vertical-align: top;
+
+    input {
+      display: none;
+
+      & + span {
+        @extend .p-relative;
+        padding-left: 35px;
+        line-height: 20px;
+
+        &:before {
+          @extend .p-absolute;
+          @extend .font-20;
+          left: 0;
+          top: 0;
+        }
+      }
+
+      &[type=checkbox] {
+        & + span {
+          @extend .d-block;
+
+          &:before {
+            font-family: 'icon-peru';
+            content: '\e80e'
+          }
+        }
+
+        &:checked {
+          & + span {
+            &:before {
+              @extend .texto-verde;
+              content: '\e80d'
+            }
+          }
+        }
+      }
+
+      &[type=radio] {
+        & + span {
+          @extend .d-block;
+
+          &:before {
+            font-family: 'icon-peru';
+            content: '\e80c'
+          }
+        }
+
+        &:checked {
+          & + span {
+            &:before {
+              @extend .texto-verde;
+              content: '\e80b'
+            }
+          }
+        }
+      }
+    }
+
+    @include mq(desktop) {
+      //max-width: 45%;
+    }
+
+    @include mq($until:tablet) {
+      width: 100%;
+      margin-bottom: 10px;
+    }
+  }
+}
+
+// Intereses
+.checkbox-intereses {
+  @extend .text-center;
+  @extend .texto-blanco;
+  @extend .d-flex;
+  @extend .px-2;
+  @extend .py-2;
+  width: 33%;
+
+  input {
+    &[type=checkbox] {
+      display: none;
+
+      & + span {
+        @extend .radio-8;
+        @extend .px-2;
+        @extend .py-2;
+        @extend .d-flex;
+        @extend .flex-column;
+        @extend .cursor-pointer;
+        background-color: $grisoscuro;
+
+        i {
+          @extend .font-18;
+          @extend .icon-checkbox-o;
+          @extend .mb-2;
+        }
+
+        strong {
+
+        }
+      }
+
+      &:checked {
+        & + span {
+          i {
+            @extend .icon-checkbox;
+          }
+        }
+      }
+    }
+
+    &[type=radio] {
+
+    }
+  }
+
+  @include mq(tablet) {
+    width: 25%;
+  }
+
+  @include mq(tablet) {
+    width: 20%;
+  }
+}

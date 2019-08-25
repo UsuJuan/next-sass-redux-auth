@@ -1,0 +1,71 @@
+/**
+ * Rutas absolutas
+ */
+$ruta-fuentes : "/static/fonts";
+$ruta-imagenes : "/static/img";
+
+/**
+  Unidad de medidad
+ */
+$unidad : 5;
+
+/*--- Colores ---*/
+$colores : #2c6286 #37E2A4 #2531E5 #005F7F #88B3FC #ff9015 #1423FF #6a6a6a #ffffff #F5F5F5 #e0e0e0 #000000 #ccced4 #10172D #F44336 #10995B #FFC400 #59360b #4A148C #F67E7E transparent;
+$nombrecolores : 'azulbase' 'verde' 'morado' 'celeste' 'celestebajo' 'naranja' 'azul' 'gris' 'blanco' 'grismuyclaro' 'grisbajo' 'negro' 'grismedio' 'grisoscuro' 'rojo' 'verdebajo' 'amarillo'  'pardo' 'lila' 'rosado' 'transparent';
+
+$azulbase: nth($colores, 1);
+$verde: nth($colores, 2);
+$morado: nth($colores, 3);
+$celeste: nth($colores, 4);
+$celestebajo: nth($colores, 5);
+$naranja: nth($colores, 6);
+$azul: nth($colores, 7);
+$gris: nth($colores, 8);
+$blanco: nth($colores, 9);
+$grisbajo: nth($colores, 10);
+$grismuyclaro: nth($colores, 11);
+$negro: nth($colores, 12);
+$grismedio: nth($colores, 13);
+$grisoscuro: nth($colores, 14);
+$rojo: nth($colores, 15);
+$verdebajo: nth($colores, 16);
+$amarillo: nth($colores, 17);
+$pardo: nth($colores, 18);
+$pardo: nth($colores, 19);
+$rosado: nth($colores, 20);
+$transparent: nth($colores, 21);
+
+// Fuentes
+$regular : 'Muli';
+$bold : 'Muli';
+
+.font-regular {
+  font-family: $regular, sans-serif;
+}
+
+.font-bold {
+  font-family: $regular, sans-serif;
+  font-weight: 700 !important;
+}
+
+.font-black {
+  font-family: $regular, sans-serif;
+  font-weight: 900 !important;
+}
+
+$overflows: auto,
+hidden,
+inherit,
+initial,
+overlay,
+scroll,
+unset,
+visible;
+
+$mq-breakpoints: (
+  zero:     0px,
+  mobile:   576px,
+  tablet:   768px,
+  desktop:  992px,
+  wide:     1200px
+);

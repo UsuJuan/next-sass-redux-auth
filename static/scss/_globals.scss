@@ -1,0 +1,860 @@
+* {
+  outline: none !important;
+
+  &:focus, &:hover{
+    text-decoration: none !important;
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  line-height: 1.45;
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: rgba($negro, 0);
+}
+
+body {
+  @extend .font-regular;
+  color: $grisoscuro;
+  font-size: 16px;
+
+  @include mq($until: mobile) {
+    font-size: 12px;
+  }
+}
+
+a {
+  @extend .decoration-none;
+  color: inherit;
+}
+
+p {
+  @extend .mt-0;
+  @extend .mb-2;
+}
+
+main {
+  padding-top: 58px;
+
+  @include mq(desktop) {
+    padding-top: 100px;
+  }
+}
+
+header {
+  &.main {
+    .logo {
+      height: 58px;
+
+      @include mq(desktop) {
+        height: 84px;
+      }
+    }
+
+    i {
+      font-size: 14px;
+
+      &.icon-lupa {
+        font-size: 20px;
+      }
+    }
+
+    &.bg-grisoscuro {
+      .open-menu {
+        @extend .texto-verde;
+      }
+
+      button {
+        &.buscador {
+          &__open {
+            @extend .texto-verde;
+            border-left: 1px solid $verde;
+          }
+
+          &__close {
+            @extend .texto-blanco;
+          }
+
+          &__submit {
+            @extend .texto-grisoscuro;
+          }
+        }
+      }
+    }
+
+    &.bg-blanco {
+      [class*=icon-] {
+        @extend .texto-grisoscuro;
+      }
+    }
+
+    .open-menu, button {
+      height: 58px;
+      width: 58px;
+      line-height: 58px;
+
+      @include mq(desktop) {
+        display: block;
+        text-align: center;
+        height: 84px;
+        width: 84px;
+        line-height: 68px;
+      }
+    }
+  }
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+strong, .strong {
+  @extend .font-bold;
+}
+
+ul {
+  @extend .mt-0;
+}
+
+figure {
+  @extend .m-0;
+  @extend .p-0;
+
+  small {
+    @extend .font-12;
+    @extend .texto-grismedio;
+  }
+
+  &.top-rounded {
+    @include border-radius(4px 4px 0 0);
+  }
+}
+
+article {
+  &.articulo {
+    @extend .bg-blanco;
+
+    header {
+      img {
+        @extend .w-100;
+      }
+
+      .titulo {
+        /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#000000+0,000000+100&0+17,1+100 */
+        background: -moz-linear-gradient(top,  rgba(0,0,0,0) 0%, rgba(0,0,0,0) 17%, rgba(0,0,0,1) 100%); /* FF3.6-15 */
+        background: -webkit-linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(0,0,0,0) 17%,rgba(0,0,0,1) 100%); /* Chrome10-25,Safari5.1-6 */
+        background: linear-gradient(to bottom,  rgba(0,0,0,0) 0%,rgba(0,0,0,0) 17%,rgba(0,0,0,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#000000',GradientType=0 ); /* IE6-9 */
+        bottom: 0;
+        left: 0;
+        right: 0;
+
+        h2 {
+          a {
+            @extend .texto-blanco;
+          }
+        }
+      }
+
+      a {
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+      }
+
+      img {
+        @extend .d-block;
+      }
+    }
+
+    &.video {
+      header {
+        > a {
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: 0;
+        }
+
+        &:after {
+          @extend %icono-video;
+        }
+      }
+    }
+
+    &.publicidad {
+
+    }
+  }
+}
+
+.cargando {
+  @extend .index-75;
+  background-color: rgba($negro, .75);
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-image: url(#{$ruta-imagenes}/loading-black.svg);
+
+  &.fixed {
+    @extend .p-fixed;
+  }
+
+  &.absolute {
+    @extend .p-absolute;
+  }
+
+  &.negro {
+    //background-color: rgba($negro, .65);
+  }
+
+  &.blanco {
+    background-color: rgba($negro, .75);
+    background-image: url(#{$ruta-imagenes}/loading-white.svg);
+  }
+}
+
+// MóduloAviso de cookies
+.aviso-cookies {
+  @extend .index-23;
+  background-color: rgba($negro, .8);
+  bottom: 0;
+  right: 0;
+  left: 0;
+  top: auto;
+
+  .cerrar {
+    right: 12px;
+    top: 10px;
+  }
+}
+
+// Icono Play en videos
+%icono-video {
+  @extend .p-absolute;
+  @extend .texto-blanco;
+  @extend .index-4;
+  @include translate(-50%, -50%);
+  @include border-radius(50%);
+  font-family: 'icon-peru';
+  content: "\e81f";
+  font-size: 48px;
+  line-height: 1;
+  top: 50%;
+  left: 50%;
+  height: 48px;
+  width: 48px;
+  background-color: rgba($negro,.5);
+
+  &.pause {
+    content: "\e81e";
+  }
+}
+
+// Artículos
+
+
+// Globales
+.border-content {
+  @include border-radius(9px);
+  @extend .px-3;
+  @extend .py-2;
+  border: 1px solid $grismedio;
+}
+
+// Contenido Artículos
+.content-body {
+  padding: 0 36px;
+
+  article {
+    margin-bottom: 26px;
+
+    p {
+      @extend .mb-4;
+
+      &:last-of-type {
+        @extend .mb-0;
+      }
+    }
+
+    @include mq(desktop) {
+      margin-bottom: 45px;
+    }
+  }
+
+  @include mq($until: tablet) {
+    padding: 0;
+  }
+}
+
+.modulo-card {
+  @include border-radius(4px 4px 0 0);
+  overflow: hidden;
+  @extend .m-0;
+  @extend .p-0;
+
+  small, p {
+    @extend .d-block;
+    @extend .py-1;
+    @extend .mb-0;
+  }
+}
+
+// Módulo Tips
+.modulo-tips {
+  [class*=h] {
+    @extend .mb-3;
+  }
+}
+
+//
+.modulo-likvideo {
+  figure {
+    @extend .p-relative;
+    a {
+      @extend .d-block;
+      @extend .p-relative;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+
+      &:after {
+        @extend %icono-video;
+      }
+    }
+  }
+}
+
+// Módulo tips Recetas
+.tips-recetas {
+  @extend .d-flex;
+  @extend .flex-row;
+  @extend .text-center;
+
+  > div {
+    @extend .w-25;
+
+    i {
+      @extend .d-block;
+      @extend .texto-verde;
+      @extend .mb-2;
+      font-size: 40px;
+    }
+
+    span {
+      @extend .d-block;
+      @extend .font-14;
+    }
+  }
+}
+
+// Módulo Publicidad
+.modulo-publicidad {
+  max-width: 100%;
+
+  figure {
+    @extend .p-relative;
+
+    .cnt-img {
+      @include border-radius(4px 4px 0 0);
+      border-style: solid;
+      border-color: $grismedio;
+      border-width: 1px 1px 0;
+      overflow: hidden;
+    }
+  }
+
+  > div {
+    @extend .px-3;
+    @extend .pt-3;
+    @extend .pb-3;
+    border-style: solid;
+    border-color: $grismedio;
+    border-width: 0 1px 1px;
+  }
+
+  ul {
+    &.datos {
+      @extend .list__unstyled;
+      @extend .mb-3;
+
+      li {
+        @extend .p-relative;
+        @extend .d-block;
+        @extend .pl-4;
+        @extend .mb-2;
+        min-height: 20px;
+
+        &:after {
+          @extend  .p-absolute;
+          @extend  .font-18;
+          font-family: 'icon-peru';
+          content: "";
+          left: 0;
+        }
+
+        &.reloj {
+          &:after {
+            content: '\e812';
+          }
+        }
+
+        &.ubicacion {
+          &:after {
+            content: '\e811';
+          }
+        }
+      }
+    }
+  }
+
+  h4 {
+    @extend .h3;
+    @extend .mb-2;
+  }
+
+  @include mq(tablet) {
+    max-width: 336px;
+  }
+}
+
+// Módulo Informació Nutricional
+.info-nutricional {}
+
+// Módulo Sub-nota
+.module-sub-notas {
+  > div {
+    @include mq(tablet) {
+      &:nth-child(3n+1) {
+        clear: both;
+      }
+    }
+
+    @include mq($until: tablet) {
+      &:nth-child(2n+1) {
+        clear: both;
+      }
+    }
+  }
+}
+
+// Módulo Sub-nota
+.module-horarios {
+  > div {
+    .ac-q {
+      @extend .p-0;
+
+      i {
+        @extend .texto-verde;
+        @extend .font-20;
+        @extend .mr-2;
+      }
+
+      .hora {
+        @extend .d-flex;
+        @extend .flex-row;
+
+        h5 {
+          @extend .mb-0;
+
+          strong {
+            @extend .d-block;
+          }
+
+          small {
+            @extend .d-block;
+            @extend .font-14;
+          }
+        }
+      }
+
+      &:after {
+        width: 100%;
+        height: 100%;
+        text-align: right;
+        line-height: 36px;
+        right: 0;
+      }
+    }
+
+    .ac-a {
+      .lugares {
+        border-top: 1px solid $grismedio;
+        @extend .pt-3;
+        @extend .mt-3;
+      }
+    }
+
+    @include mq(tablet) {
+      &:nth-child(3n+1) {
+        clear: both;
+      }
+    }
+
+    @include mq($until: tablet) {
+      &:nth-child(2n+1) {
+        clear: both;
+      }
+    }
+  }
+}
+
+.sub-nota {
+  @extend .mb-5;
+
+  figure {
+    @include border-radius(4px 4px 0 0);
+    @extend .over-hidden;
+  }
+
+  .content {
+    @extend .mt-3;
+  }
+}
+
+[class*=etiqueta-] {
+  @extend .p-absolute;
+  @extend .px-2;
+  @extend .font-20;
+  @extend .d-flex;
+  @extend .flex-column;
+  @extend .justify-content-center;
+  @extend .index-8;
+  top: 15px;
+  height: 48px;
+  background-color: $verde;
+
+  &:after {
+    @include translate(100%, 0);
+    width: 0;
+    height: 0;
+    right: 0;
+    top: 0;
+    border-style: solid;
+    border-width: 24px 0 24px 15px;
+    border-color: transparent transparent transparent $verde;
+  }
+
+  &:before, &:after {
+    @extend .p-absolute;
+    content: "";
+  }
+
+  @include mq(desktop) {
+    @include translate(-5px, 0);
+
+    &:before {
+      @include translate(0, 5px);
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 0 5px 5px 0;
+      border-color: transparent $verde transparent transparent;
+    }
+  }
+}
+
+.share-buttons {
+  > div {
+    border: 1px solid $grismedio;
+
+    & + div {
+      border-left: 0;
+    }
+  }
+}
+
+.ver-mas {
+  @extend .p-relative;
+
+  > * {
+    @extend .p-relative;
+    @extend .index-1;
+  }
+
+  &:after {
+    content: "";
+    @extend .p-absolute;
+    @extend .index-3;
+    @extend .w-100;
+    @extend .d-block;
+    bottom: 0;
+    top: auto;
+    left: 0;
+    right: 0;
+    height: 75px;
+    /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#ffffff+0,ffffff+100&0+0,0.68+100 */
+    background: -moz-linear-gradient(top,  rgba(255,255,255,0) 0%, rgba(255,255,255,0.68) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top,  rgba(255,255,255,0) 0%,rgba(255,255,255,0.68) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom,  rgba(255,255,255,0) 0%,rgba(255,255,255,0.68) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#adffffff',GradientType=0 ); /* IE6-9 */
+  }
+}
+
+.d-attrs {
+  @include border-radius(8px);
+  @extend .px-2;
+  @extend .py-2;
+  @extend .d-flex;
+  @extend .flex-row;
+  border: 1px solid $grismedio;
+
+  > * {
+    @extend .d-flex;
+    @extend .flex-row;
+    @extend .align-items-center;
+    @extend .px-2;
+
+    & + * {
+      border-left: 1px solid $grismedio;
+    }
+
+    &:first-of-type {
+      @extend .pl-0;
+    }
+
+    i {
+      @include align-self(start);
+      @extend .mr-1;
+    }
+  }
+}
+
+// Listas
+.list {
+  &__unstyled {
+    @extend .pl-0;
+    list-style: none;
+  }
+
+  &__tips {
+    @extend .pl-0;
+    list-style: none;
+
+    li {
+      @extend .p-relative;
+      @extend .pl-4;
+      @extend .mb-3;
+
+      &:before {
+        @include border-radius(50%);
+        @extend .p-absolute;
+        @extend .d-block;
+        @extend .bg-verde;
+        left: 0;
+        top: 8px;
+        content: "";
+        width: 7px;
+        height: 7px;
+      }
+    }
+  }
+
+  &__comollegar {
+    @extend .list__unstyled;
+
+    li {
+      h4 {
+        @extend .d-flex;
+        @extend .flex-row;
+        @extend .align-items-center;
+        @extend .mb-1;
+        text-transform: uppercase;
+
+        i {
+          @extend .texto-verde;
+          @extend .font-36;
+          @extend .mr-3 ;
+        }
+      }
+    }
+  }
+
+  &__tags {
+    @extend .list__unstyled;
+
+    li {
+      @extend .d-inline-block;
+      @extend .mr-1;
+
+      a {
+        @extend .d-block;
+        @extend .text-center;
+        @include border-radius(12px);
+        min-width: 84px;
+        border: 1px solid $grismedio;
+        font-size: 16px;
+        line-height: 27px;
+        padding: 0 15px;
+
+        &:hover {
+          @extend .bg-verde;
+          @extend .texto-blanco;
+          border-color: $verde;
+        }
+      }
+    }
+
+    @include mq($until: desktop) {
+      li {
+        a {
+          font-size: 12px;
+          padding: 0 10px;
+          line-height: 18px;
+          min-width: 60px;
+        }
+      }
+    }
+  }
+
+  &__numbered {
+    list-style: none;
+    @extend .pl-5;
+
+    li {
+      @extend .mb-4;
+      counter-increment: my-awesome-counter;
+      position: relative;
+
+      &:before {
+        @extend .font-14;
+        @extend .texto-grisoscuro;
+        @extend .p-absolute;
+        @extend .bg-verde;
+        @extend .text-center;
+        @include border-radius(50%);
+        content: counter(my-awesome-counter);
+        font-weight: bold;
+        --size: 32px;
+        left: -47px;
+        line-height: 25px;
+        width: 25px;
+        height: 25px;
+        top: 0;
+      }
+    }
+  }
+}
+
+// Módulo Cronograma
+.cronograma {
+  &__item {
+    @extend .mb-4;
+  }
+
+  &__content {
+    @extend .border-content;
+
+    i {
+      @extend .texto-verde;
+      @extend .font-20;
+      @extend .mr-2;
+    }
+
+    .hora {
+      @extend .d-flex;
+      @extend .flex-row;
+
+      h5 {
+        strong {
+          @extend .d-block;
+        }
+
+        small {
+          @extend .d-block;
+          @extend .font-14;
+        }
+      }
+    }
+
+    .header {
+      @extend .mb-3;
+      border-bottom: 1px  solid $grismedio;
+
+      h5 {
+        @extend .mb-3;
+      }
+    }
+
+    .lugares {
+      .lugar {
+        @extend .mb-4;
+
+        p {
+          @extend .mb-0;
+          @extend .font-14;
+        }
+      }
+    }
+  }
+}
+
+// Búsqueda
+.resultados-busqueda {
+  @extend .p-fixed;
+  @extend .bg-blanco;
+  @extend .index-9;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  top: 58px;
+
+  a {
+    @extend .font-18;
+  }
+
+  @include mq(desktop) {
+    top: 84px;
+  }
+
+  .resultados {
+    &__tags {
+      a {
+        &:hover, &.active {
+          background-color: rgba($verde, .2);
+        }
+      }
+    }
+
+    &__general {
+      a {
+        @extend .d-flex;
+        @extend .flex-column;
+        @extend .justify-content-center;
+
+        &:after {
+          @extend .p-absolute;
+          @extend .font-14;
+          @include translate(0, -50%);
+          right: 0;
+          top: 50%;
+          font-family: 'icon-peru';
+          content: '\e824';
+        }
+
+        @include mq(desktop) {
+          min-height: 76px;
+        }
+      }
+    }
+  }
+
+  .resultados-general {
+
+  }
+}
+
+//

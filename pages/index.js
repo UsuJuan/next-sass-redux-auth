@@ -1,10 +1,25 @@
-import '../styles/style.scss';
-import Layout from '../components/layout';
+import { connect } from 'react-redux';
+import { compose } from 'redux';
+import Home from '../components/Home';
+import withUserAuth from '../lib/auth/withAuth';
+import { logout } from '../redux/actions/loginActions';
 
-export default () => {
-  return (<div>
-    <Layout>
-      <div className='example'>Hello World!</div>
-    </Layout>
-  </div>)
-}
+const mapStateToProps = state => {
+  return {
+    someState: 'lalala'
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    logout: () => dispatch(logout())
+  };
+};
+
+export default compose(
+  withUserAuth,
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )
+)(Home);

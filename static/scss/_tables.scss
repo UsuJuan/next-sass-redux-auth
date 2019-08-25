@@ -1,0 +1,105 @@
+$spacer: 1rem !default;
+$spacers: () !default;
+$spacers: map-merge((
+  0: 0,
+  1: ($spacer * .25),
+  2: ($spacer * .5),
+  3: $spacer,
+  4: ($spacer * 1.5),
+  5: ($spacer * 3)
+), $spacers);
+$table-cell-padding:          5px 7px !default;
+$table-cell-padding-sm:       .3rem !default;
+$table-bg:                    null !default;
+
+.table {
+  @extend .mb-0 !optional;
+  width: 100%;
+  margin-bottom: $spacer;
+  color: inherit;
+  background-color: $table-bg;
+  border-collapse: collapse;
+
+  th,
+  td {
+    padding: $table-cell-padding;
+    vertical-align: top;
+    border-top: 1px solid $grismedio;
+  }
+
+  thead th {
+    vertical-align: bottom;
+    border-bottom: 2px solid $grismedio;
+  }
+
+  tbody + tbody {
+    border-top: 2px solid $grismedio;
+  }
+}
+
+.table-sm {
+  th,
+  td {
+    padding: $table-cell-padding-sm;
+  }
+}
+
+.table-bordered {
+  border: 1px solid $grismedio;
+
+  th,
+  td {
+    border: 1px solid $grismedio;
+  }
+
+  thead {
+    th,
+    td {
+      border-bottom-width: 2px;
+    }
+  }
+}
+
+.table-borderless {
+  th,
+  td,
+  thead th,
+  tbody + tbody {
+    border: 0;
+  }
+}
+
+.table-striped {
+  tbody tr:nth-of-type(odd) {
+    background-color: rgba($negro, .05);
+  }
+}
+
+.table-hover {
+  tbody tr {
+    &:hover {
+      color: inherit;
+      background-color: rgba($negro, .075);
+    }
+  }
+}
+
+.table-responsive {
+  @each $breakpoint in map-keys($mq-breakpoints) {
+    $next: breakpoint-next($breakpoint, $mq-breakpoints);
+    $infix: breakpoint-infix($next, $mq-breakpoints);
+
+    &#{$infix} {
+      @include mq($breakpoint) {
+        display: block;
+        width: 100%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+
+        > .table-bordered {
+          border: 0;
+        }
+      }
+    }
+  }
+}
