@@ -1,9 +1,9 @@
 {
   "scripts": {
-    "dev": "next",
     "build": "next build",
-    "start": "NODE_ENV=production node server.js -p $PORT",
-    "heroku-postbuild": "next build"
+    "dev": "node server.js",
+    "postinstall": "npm run build",
+    "start": "NODE_ENV=production node server.js"
   },
   "dependencies": {
     "@zeit/next-sass": "^1.0.0",
