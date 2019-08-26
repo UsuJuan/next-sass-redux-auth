@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-import { authenticate } from '../redux/actions/authActions.js';
+import { authenticate } from '../redux/actions/authActions';
 import Layout from '../components/layout';
 
 const Signin = ({ authenticate }) => {

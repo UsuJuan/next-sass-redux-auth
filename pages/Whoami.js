@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { reauthenticate, getCookie, checkServerSideCookie, isAuthenticated } from '../redux/actions/authActions';
 import Router from 'next/router';
 
-import Layout from '../components/Layout.js';
+import Layout from '../components/layout';
 
 const Whoami = ({ user }) => (
   <Layout title="Who Am I">
