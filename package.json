@@ -2,7 +2,7 @@
   "scripts": {
     "dev": "next",
     "build": "next build",
-    "start": "NODE_ENV=production node server.js"
+    "start": "next start"
   },
   "dependencies": {
     "@zeit/next-sass": "^1.0.0",
@@ -33,5 +33,9 @@
   "browserslist": [
     "last 2 versions",
     "> 1%"
-  ]
+  ],
+  "engines" : {
+    "node": "^10.15.3",
+    "npm": "^6.9.0"
+  }
 }
