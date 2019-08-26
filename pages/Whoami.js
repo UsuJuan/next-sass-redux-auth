@@ -1,9 +1,9 @@
 import axios from 'axios';
 import { connect } from 'react-redux';
-import { reauthenticate, getCookie, checkServerSideCookie, isAuthenticated } from '../redux/actions/authActions';
+import { reauthenticate, getCookie, checkServerSideCookie, isAuthenticated } from '../redux/actions/authActions.js';
 import Router from 'next/router';
 
-import Layout from '../components/Layout';
+import Layout from '../components/Layout.js';
 
 const Whoami = ({ user }) => (
   <Layout title="Who Am I">
