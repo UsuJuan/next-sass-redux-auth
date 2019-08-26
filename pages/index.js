@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 import Home from '../components/Home';
 import withUserAuth from '../lib/auth/withAuth';
-import { logout } from '../redux/actions/loginActions.js';
+import { logout } from '../redux/actions/loginActions';
 
 const mapStateToProps = state => {
   return {

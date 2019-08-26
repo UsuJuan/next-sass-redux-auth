@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { connect } from 'react-redux';
-import { reauthenticate, getCookie, checkServerSideCookie, isAuthenticated } from '../redux/actions/authActions.js';
+import { reauthenticate, getCookie, checkServerSideCookie, isAuthenticated } from '../redux/actions/authActions';
 import Router from 'next/router';
 
 import Layout from '../components/Layout.js';
